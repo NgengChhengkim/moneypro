@@ -1,0 +1,28 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.menu {
+  border-radius: 0px
+}
+
+.collapse ul li:hover{
+  background: #080808;
+}
+
+.search-item {
+  border-radius: 0px;
+}
+
+#wrapper {
+   height: 100%;
+  .content {
+    min-height: 500px;
+  }
+
+  .footer {
+    height: 25px;
+    border-top: 1px solid #E1E1E1;
+    padding-top: 10px;
+    font-weight: bold;
+  }
+}
