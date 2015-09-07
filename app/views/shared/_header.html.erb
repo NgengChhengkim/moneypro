@@ -4,6 +4,14 @@
       <div class="navbar-brand"><%= link_to t("menu.title"), "#" %></div>
     </div>
 
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
@@ -11,10 +19,11 @@
         </div>
         <button type="submit" class="btn btn-default search-item"><%= t "menu.submit" %></button>
       </form>
+
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to t("menu.signup"), "#" %></li>
-        <li><%= link_to t("menu.signin"), "#" %></li>
-        <li><%= link_to t("menu.signout"), "#" %></li>
+        <li><%= link_to t("menu.signup"), new_user_registration_path %></li>
+        <li><%= link_to t("menu.signin"), new_user_session_path %></li>
+        <li><%= link_to t("menu.signout"), destroy_user_session_path, method: :delete %></li>
         </li>
       </ul>
     </div>
