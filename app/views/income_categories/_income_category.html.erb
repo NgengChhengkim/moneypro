@@ -1,0 +1,9 @@
+<tr>
+  <td><%= income_category.name %></td>
+  <td><%= income_category.description %></td>
+  <td><%= link_to t("income_categories.table.edit"),
+   edit_income_category_path(income_category), remote: true %></td>
+  <td><%= link_to t("income_categories.table.delete"), income_category, method: :delete,
+                  data: {confirm: t("messages.confirm_delete")},
+                  remote: true %></td>
+</tr>

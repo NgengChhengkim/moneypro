@@ -10,7 +10,9 @@
   <div id="wrapper">
     <%= render "shared/header" %>
     <div class="content container">
-      <%= render "shared/flash" %>
+      <div class="flash">
+        <%= render "shared/flash" %>
+      </div>
       <%= yield %>
     </div>
     <%= render "shared/footer" %>
