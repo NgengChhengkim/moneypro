@@ -1,0 +1,7 @@
+<% if @payment_method.errors.any? %>
+  $(".errors").html("<%= j (render 'shared/errors_messages', object: @payment_method) %>")
+<% else %>
+  $(".flash").html("<%= j render 'shared/flash' %>")
+  $(".payment-method-index").html("<%= j render @payment_methods %>")
+  $("#form-modal").modal("hide")
+<% end %>

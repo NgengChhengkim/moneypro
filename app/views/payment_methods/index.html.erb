@@ -1,0 +1,25 @@
+<div class="row payment_methods">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="payment_methods-title"><%= t "payment_methods.title" %></div>
+
+    <div><%= link_to t("payment_methods.add_new"),new_payment_method_path,
+    remote: true, class: "btn btn-warning pull-right add-new fa fa-plus-circle" %>
+    </div></br></br>
+    <table class="table table table-bordered table-striped">
+      <thead>
+      <tr class="success">
+        <td><%= t "payment_methods.table.name" %></td>
+        <td><%= t "payment_methods.table.description" %></td>
+        <td colspan="2"><%= t "payment_methods.table.action" %></td>
+      </tr>
+      </thead>
+
+      <tbody class="payment-method-index">
+        <%= render @payment_methods %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="modal fade" id="form-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+
