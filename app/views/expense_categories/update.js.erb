@@ -1,0 +1,7 @@
+<% if @expense_category.errors.any? %>
+  $(".errors").html("<%= j (render 'shared/errors_messages', object: @expense_category) %>")
+<% else %>
+  $(".flash").html("<%= j render 'shared/flash' %>")
+  $(".expense-index").html("<%= j render @expense_categories %>")
+  $("#form-modal").modal("hide")
+<% end %>

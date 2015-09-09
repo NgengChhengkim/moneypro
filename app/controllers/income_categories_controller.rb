@@ -13,7 +13,7 @@ class IncomeCategoriesController < ApplicationController
   def create
     @income_category = current_user.income_categories.build params_income_categories
     @income_category.save
-   flash.now[:success] = t "flash.create"
+    flash.now[:success] = t "flash.create"
   end
 
   def edit

@@ -1,0 +1,11 @@
+en:
+  expense_categories:
+    title: "Expense Category"
+    add_new: " Add new"
+    category: "Category"
+    cancel: "Cancel"
+    save: "Save"
+    table:
+      name: "Category Name"
+      description: "Category Description"
+      action: "Action"
