@@ -1,0 +1,20 @@
+<div class="expense_categories">
+  <%= form_for @expense_category, remote: true do |f| %>
+    <p>
+      <%= f.label :name, class: "item" %>
+      <%= f.text_field :name, class: "form-control item" %>
+    </p>
+
+    <p>
+      <%= f.label :description, class: "item" %>
+      <%= f.text_field :description, class: "form-control item" %>
+    </p>
+      <span>
+        <button type="button" class="btn btn-primary item pull-left" data-dismiss="modal">
+          <%= t "expense_categories.cancel" %></button>
+      </span>
+      <span>
+        <%= f.submit t("expense_categories.save"), class: "btn btn-primary pull-right item" %>
+      </span>
+  <% end %>
+</div>
