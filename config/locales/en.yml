@@ -7,3 +7,9 @@ en:
     signout: "Sign out"
   footer:
     title: "Money Pro"
+  messages:
+    confirm_delete: "Are you sure?"
+  flash:
+    create: "Successful created"
+    update: "Successful updated"
+    delete: "Successful deleted"

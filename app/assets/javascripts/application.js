@@ -17,8 +17,11 @@
 //= require jquery
 //= require bootstrap-sprockets
 
-$(document).on("ready", function() {
+var flash = function() {
   setTimeout(function() {
     $(".hide-flash").fadeOut("normal");
   }, 3000);
-});
+}
+
+$(document).on("ready", flash);
+$(document).on("page:update", flash);

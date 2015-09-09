@@ -1,0 +1,25 @@
+<div class="row income_categories">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="income_categories-title"><%= t "income_categories.title" %></div>
+
+    <div><%= link_to t("income_categories.add_new"),new_income_category_path,
+    remote: true, class: "btn btn-warning pull-right add-new fa fa-plus-circle" %>
+    </div></br></br>
+    <table class="table table table-bordered table-striped">
+      <thead>
+      <tr class="success">
+        <td><%= t "income_categories.table.name" %></td>
+        <td><%= t "income_categorie.table.description" %></td>
+        <td colspan="2"><%= t "income_categories.table.action" %></td>
+      </tr>
+      </thead>
+
+      <tbody class="income-index">
+        <%= render @income_categories %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="modal fade" id="form-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+

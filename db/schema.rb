@@ -18,21 +18,30 @@ ActiveRecord::Schema.define(version: 20150907074756) do
     t.string   "description", limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.integer  "user_id",     limit: 4
   end
+
+  add_index "expense_categories", ["user_id"], name: "index_expense_categories_on_user_id", using: :btree
 
   create_table "income_categories", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.string   "description", limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.integer  "user_id",     limit: 4
   end
+
+  add_index "income_categories", ["user_id"], name: "index_income_categories_on_user_id", using: :btree
 
   create_table "payment_methods", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.string   "description", limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.integer  "user_id",     limit: 4
   end
+
+  add_index "payment_methods", ["user_id"], name: "index_payment_methods_on_user_id", using: :btree
 
   create_table "user_expenses", force: :cascade do |t|
     t.string   "amount",              limit: 255, default: "0"
@@ -84,6 +93,9 @@ ActiveRecord::Schema.define(version: 20150907074756) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "expense_categories", "users"
+  add_foreign_key "income_categories", "users"
+  add_foreign_key "payment_methods", "users"
   add_foreign_key "user_expenses", "expense_categories"
   add_foreign_key "user_expenses", "payment_methods"
   add_foreign_key "user_expenses", "users"

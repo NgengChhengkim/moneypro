@@ -1,0 +1,7 @@
+<% if @income_category.errors.any? %>
+  $(".errors").html("<%= j (render 'shared/errors_messages', object: @income_category) %>")
+<% else %>
+  $(".flash").html("<%= j render 'shared/flash' %>")
+  $(".income-index").html("<%= j render @income_categories %>")
+  $("#form-modal").modal("hide")
+<% end %>
