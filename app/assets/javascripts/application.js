@@ -16,6 +16,7 @@
 //= require_tree .
 //= require jquery
 //= require bootstrap-sprockets
+//= require bootstrap-datepicker
 
 var flash = function() {
   setTimeout(function() {
@@ -23,5 +24,18 @@ var flash = function() {
   }, 3000);
 }
 
+var datepicker = function() {
+  $(".datepicker").datepicker({
+    inline: true,
+    sideBySide: true,
+    todayHighlight: true,
+    showButtonPanel: true,
+    format: "yyyy-mm-dd",
+  }).on("changeDate", function(ev){
+    $(this).datepicker('hide');
+  });
+}
+
 $(document).on("ready", flash);
 $(document).on("page:update", flash);
+$(document).on("page:update", datepicker);

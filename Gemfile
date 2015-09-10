@@ -11,6 +11,10 @@ gem "sdoc", "~> 0.4.0", group: :doc
 gem "bootstrap-sass"
 gem "devise"
 gem "font-awesome-rails"
+gem "bootstrap-datepicker-rails"
+gem "kaminari"
+gem "bootstrap-kaminari-views"
+gem "config"
 
 group :development, :test do
   gem "byebug"

@@ -1,0 +1,31 @@
+<div class="row user_incomes">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="user_incomes-title"><%= t "user_incomes.title" %></div>
+
+    <div><%= link_to t("user_incomes.add_new"),new_user_income_path,
+    remote: true, class: "btn btn-warning pull-right add-new fa fa-plus-circle" %>
+    </div></br></br>
+    <table class="table table table-bordered table-striped">
+      <thead>
+      <tr class="success">
+        <td><%= t "user_incomes.table.date" %></td>
+        <td><%= t "user_incomes.table.amount" %></td>
+        <td><%= t "user_incomes.table.income_category" %></td>
+        <td><%= t "user_incomes.table.payment_method" %></td>
+        <td colspan="2"><%= t "user_incomes.table.action" %></td>
+      </tr>
+      </thead>
+
+      <tbody class="user-income-index">
+        <%= render @user_incomes %>
+      </tbody>
+    </table>
+    <div class="paginate" align="center">
+      <%= paginate @user_incomes, theme: "twitter-bootstrap-3" %>
+    </div>
+
+  </div>
+</div>
+
+<div class="modal fade" id="form-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+

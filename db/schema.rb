@@ -44,11 +44,11 @@ ActiveRecord::Schema.define(version: 20150907074756) do
   add_index "payment_methods", ["user_id"], name: "index_payment_methods_on_user_id", using: :btree
 
   create_table "user_expenses", force: :cascade do |t|
-    t.string   "amount",              limit: 255, default: "0"
+    t.float    "amount",              limit: 24
     t.string   "description",         limit: 255
     t.date     "date"
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "user_id",             limit: 4
     t.integer  "expense_category_id", limit: 4
     t.integer  "payment_method_id",   limit: 4
@@ -59,11 +59,11 @@ ActiveRecord::Schema.define(version: 20150907074756) do
   add_index "user_expenses", ["user_id"], name: "index_user_expenses_on_user_id", using: :btree
 
   create_table "user_incomes", force: :cascade do |t|
-    t.string   "amount",             limit: 255, default: "0"
+    t.float    "amount",             limit: 24
     t.string   "description",        limit: 255
     t.date     "date"
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "user_id",            limit: 4
     t.integer  "income_category_id", limit: 4
     t.integer  "payment_method_id",  limit: 4
