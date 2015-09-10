@@ -1,0 +1,10 @@
+en:
+  payment_methods:
+    title: "Pyament Method"
+    add_new: " Add new"
+    cancel: "Cancel"
+    save: "Save"
+    table:
+      name: "Pyament Method Name"
+      description: "Description"
+      action: "Action"

@@ -1,0 +1,9 @@
+<tr>
+  <td><%= payment_method.name %></td>
+  <td><%= payment_method.description %></td>
+  <td><%= link_to t("payment_methods.table.edit"),
+   edit_payment_method_path(payment_method), remote: true %></td>
+  <td><%= link_to t("payment_methods.table.delete"), payment_method, method: :delete,
+                  data: {confirm: t("messages.confirm_delete")},
+                  remote: true %></td>
+</tr>
