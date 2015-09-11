@@ -1,0 +1,40 @@
+<div class="user_expenses">
+  <%= form_for @user_expense, remote: true do |f| %>
+    <p>
+      <%= f.label :amount, class: "item" %>
+      <%= f.number_field :amount, class: "form-control item", placeholder: t("user_expenses.placeholder.amount") %>
+    </p>
+
+    <p>
+      <%= f.label :description, class: "item" %>
+      <%= f.text_field :description, class: "form-control item", placeholder: t("user_expenses.placeholder.description") %>
+    </p>
+
+    <p>
+      <%= f.label :expense_category_id, class: "item" %>
+      <%= f.select :expense_category_id,
+      options_from_collection_for_select(current_user.expense_categories,
+      :id, :name), {}, {class: "form-control item"} %>
+    </p>
+
+    <p>
+      <%= f.label :payment_method_id, class: "item" %>
+      <%= f.select :payment_method_id,
+      options_from_collection_for_select(current_user.payment_methods,
+      :id, :name), {}, {class: "form-control item"} %>
+    </p>
+
+    <p>
+      <%= f.label :date, class: "item" %>
+      <%= f.text_field :date, class: "form-control datepicker" %>
+    </p>
+
+    <span>
+      <button type="button" class="btn btn-primary item pull-left" data-dismiss="modal">
+        <%= t "user_expenses.cancel" %></button>
+    </span>
+    <span>
+      <%= f.submit t("user_expenses.save"), class: "btn btn-primary pull-right item" %>
+    </span>
+  <% end %>
+</div>

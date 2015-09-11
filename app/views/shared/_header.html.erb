@@ -23,7 +23,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li><%= link_to t("menu.user_income"), user_incomes_path %></li>
-          <li><%= link_to t("menu.user_expense"), "#" %></li>
+          <li><%= link_to t("menu.user_expense"), user_expenses_path %></li>
           <li><%= link_to t("menu.income_category"), income_categories_path %></li>
           <li><%= link_to t("menu.expense_category"), expense_categories_path %></li>
           <li><%= link_to t("menu.payment_method"), payment_methods_path %></li>

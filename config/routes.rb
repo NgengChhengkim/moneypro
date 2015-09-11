@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   resources :income_categories, exept: :show
   resources :expense_categories, exept: :show
   resources :payment_methods, exept: :show
+  resources :user_expenses, exept: :show
   resources :user_incomes, exept: :show
 end

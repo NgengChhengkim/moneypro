@@ -1,6 +1,6 @@
 en:
-  user_incomes:
-    title: "Income"
+  user_expenses:
+    title: "Expense"
     add_new: " Add new"
     cancel: "Cancel"
     save: "Save"
