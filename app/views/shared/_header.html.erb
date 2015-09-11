@@ -21,9 +21,17 @@
       </form>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to t("menu.signup"), new_user_registration_path %></li>
-        <li><%= link_to t("menu.signin"), new_user_session_path %></li>
-        <li><%= link_to t("menu.signout"), destroy_user_session_path, method: :delete %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to t("menu.user_income"), user_incomes_path %></li>
+          <li><%= link_to t("menu.user_expense"), "#" %></li>
+          <li><%= link_to t("menu.income_category"), income_categories_path %></li>
+          <li><%= link_to t("menu.expense_category"), expense_categories_path %></li>
+          <li><%= link_to t("menu.payment_method"), payment_methods_path %></li>
+          <li><%= link_to t("menu.signout"), destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to t("menu.signup"), new_user_registration_path %></li>
+          <li><%= link_to t("menu.signin"), new_user_session_path %></li>
+        <% end %>
         </li>
       </ul>
     </div>

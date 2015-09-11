@@ -5,6 +5,11 @@ en:
     signin: "Sign In"
     signup: "Sign Up"
     signout: "Sign out"
+    user_income: "User Income"
+    user_expense: "User Expense"
+    income_category: "Income Category"
+    expense_category: "Expense Category"
+    payment_method: "Payment Method"
   footer:
     title: "Money Pro"
   messages:
@@ -13,3 +18,13 @@ en:
     create: "Successful created"
     update: "Successful updated"
     delete: "Successful deleted"
+  views:
+    pagination:
+      previous: "&lt; Previous"
+      next: "Next &gt;"
+      truncate: "..."
+  date:
+    formats:
+      default: ! "%Y/%m/%d"
+  currency:
+    default: "$"

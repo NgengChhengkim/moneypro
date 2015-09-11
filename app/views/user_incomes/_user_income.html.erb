@@ -1,0 +1,11 @@
+<tr>
+  <td><%= l user_income.date, format: :default %></td>
+  <td><%= t "currency.default" %><%= user_income.amount %></td>
+  <td><%= user_income.income_category_name %></td>
+  <td><%= user_income.payment_method_name %></td>
+  <td><%= link_to t("user_incomes.table.edit"),
+   edit_user_income_path(user_income), remote: true %></td>
+  <td><%= link_to t("user_incomes.table.delete"), user_income, method: :delete,
+                  data: {confirm: t("messages.confirm_delete")},
+                  remote: true %></td>
+</tr>

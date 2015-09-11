@@ -1,0 +1,15 @@
+en:
+  user_incomes:
+    title: "Income"
+    add_new: " Add new"
+    cancel: "Cancel"
+    save: "Save"
+    table:
+      amount: "amount"
+      description: "Category Description"
+      date: "Date"
+      action: "Action"
+    placeholder:
+      amount: "Amount"
+      description: "Description"
+

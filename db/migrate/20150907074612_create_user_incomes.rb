@@ -1,7 +1,7 @@
 class CreateUserIncomes < ActiveRecord::Migration
   def change
     create_table :user_incomes do |t|
-      t.string :amount, default: 0
+      t.float :amount
       t.string :description
       t.date :date
 
