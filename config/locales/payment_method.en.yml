@@ -7,4 +7,5 @@ en:
     table:
       name: "Pyament Method Name"
       description: "Description"
+      initial_balance: "Initial Balance"
       action: "Action"

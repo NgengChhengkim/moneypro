@@ -4,4 +4,5 @@ class PaymentMethod < ActiveRecord::Base
   has_many :user_expenses
 
   validates :name, presence: true
+  validates :initial_balance, numericality: {greater_than_or_equal: 0}
 end
