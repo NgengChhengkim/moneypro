@@ -34,11 +34,12 @@ ActiveRecord::Schema.define(version: 20150907074756) do
   add_index "income_categories", ["user_id"], name: "index_income_categories_on_user_id", using: :btree
 
   create_table "payment_methods", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.string   "description", limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.integer  "user_id",     limit: 4
+    t.string   "name",            limit: 255
+    t.string   "description",     limit: 255
+    t.float    "initial_balance", limit: 24,  default: 0.0
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.integer  "user_id",         limit: 4
   end
 
   add_index "payment_methods", ["user_id"], name: "index_payment_methods_on_user_id", using: :btree

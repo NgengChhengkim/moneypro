@@ -31,7 +31,7 @@ class PaymentMethodsController < ApplicationController
 
   private
   def params_payment_method
-    params.require(:payment_method).permit :name, :description
+    params.require(:payment_method).permit :name, :description, :initial_balance
   end
 
   def load_category

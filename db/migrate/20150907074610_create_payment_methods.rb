@@ -3,6 +3,7 @@ class CreatePaymentMethods < ActiveRecord::Migration
     create_table :payment_methods do |t|
       t.string :name
       t.string :description
+      t.float :initial_balance, default: 0
 
       t.timestamps null: false
 
