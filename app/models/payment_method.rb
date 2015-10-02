@@ -5,4 +5,6 @@ class PaymentMethod < ActiveRecord::Base
 
   validates :name, presence: true
   validates :initial_balance, numericality: {greater_than_or_equal: 0}
+
+  scope :total_initial_balance, ->{sum :initial_balance}
 end

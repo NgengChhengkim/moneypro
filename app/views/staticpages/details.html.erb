@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-8">
+    <h2><%= @type.capitalize %> : <%= payment_method_name @payment_method_id %></h2>
+    <h3><%= @interval.capitalize %>: <%= interval_name @interval %></h3>
+    <div class="detail-summary">
+      <table class="table">
+        <% @transaction_detail.each do |event, transactions| %>
+          <thead>
+            <tr>
+              <td colspan="4" class="alert alert-info"><%= event %></td>
+            </tr>
+          </thead>
+          <tbody>
+            <% transactions.each do |transaction| %>
+              <tr>
+                <td><%= transaction.send("#{@type}_category").name %></td>
+                <td><%= transaction.description %></td>
+                <td><%= transaction.amount %></td>
+                <td><%= transaction.payment_method.name if Settings.payment_methods.all == @payment_method_id %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        <% end %>
+      </table>
+      <p class="label label-success"><%= "#{t "summary.labels.total"} #{@total}" %></p>
+    </div>
+  </div>
+</div>

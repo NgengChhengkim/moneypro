@@ -1,0 +1,19 @@
+<div class="summary">
+  <h3><%= interval_name interval %></h3>
+  <table class="table">
+    <tbody>
+      <tr>
+        <td><%= "#{t 'summary.labels.total_income'}" %></td>
+        <td><%= eval "@#{interval}_income" %></td>
+        <td><%= link_to t("summary.labels.detail"), details_path(Settings.types.income,
+          interval, @payment_method_id) %></td>
+      </tr>
+      <tr>
+        <td><%= "#{t 'summary.labels.total_expense'}" %></td>
+        <td><%= eval "@#{interval}_expense" %></td>
+        <td><%= link_to t("summary.labels.detail"), details_path(Settings.types.expense,
+          interval, @payment_method_id) %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
