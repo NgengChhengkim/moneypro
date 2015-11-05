@@ -1,2 +1,11 @@
 pagination:
   per_page: 10
+intervals:
+  daily: "daily"
+  monthly: "monthly"
+  yearly: "yearly"
+payment_methods:
+  all: "all"
+types:
+  income: "income"
+  expense: "expense"

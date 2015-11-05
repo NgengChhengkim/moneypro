@@ -1,0 +1,33 @@
+ <!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active">
+    <a href="#daily" aria-controls="home" role="tab" data-toggle="tab">
+      <%= t "summary.interval.daily" %>
+    </a>
+  </li>
+  <li role="presentation">
+    <a href="#monthly" aria-controls="profile" role="tab" data-toggle="tab">
+      <%= t "summary.interval.monthly" %>
+    </a>
+  </li>
+  <li role="presentation">
+    <a href="#yearly" aria-controls="messages" role="tab" data-toggle="tab">
+      <%= t "summary.interval.yearly" %>
+    </a>
+  </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="daily">
+    <%= render "shared/summary", interval: Settings.intervals.daily %>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="monthly">
+    <%= render "shared/summary", interval: Settings.intervals.monthly %>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="yearly">
+    <%= render "shared/summary", interval: Settings.intervals.yearly %>
+  </div>
+  <hr>
+  <h4><%= "#{t 'summary.labels.total_balance'} #{@daily_balance}" %></h4>
+</div>

@@ -1,0 +1,5 @@
+<%= search_form_for @q do |f| %>
+  <%= f.label :name_cont %>
+  <%= f.search_field :name_cont, class: "form-control" %>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>

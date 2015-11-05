@@ -1,0 +1,14 @@
+en:
+  summary:
+    title: "Summary"
+    interval:
+      daily: "Daily"
+      monthly: "Monthly"
+      yearly: "Yearly"
+    labels:
+      total_income: "Total Income:"
+      total_expense: "Total Expense:"
+      total_balance: "Balance:"
+      all: "All payment methods"
+      detail: "Detail"
+      total: "Total"
