@@ -9,3 +9,6 @@ payment_methods:
 types:
   income: "income"
   expense: "expense"
+payment_class:
+  user_income: "UserIncome"
+  user_expense: "UserExpense"

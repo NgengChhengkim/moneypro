@@ -50,11 +50,21 @@ class UserIncome < ActiveRecord::Base
   }
 
   scope :total_income, ->payment_method_id, user_id{
-    if payment_method_id
+    if Settings.payment_methods.all == payment_method_id
       where("user_id = ?", user_id)
     else
       where("payment_method_id = ? and user_id = ?",
         payment_method_id, user_id)
+    end
+  }
+
+  scope :income_search, ->keyword, category_id, payment_method_id, start_date, end_date{
+    if Settings.payment_methods.all == payment_method_id
+      where("description like ? and income_category_id = ? and date >= ? and date <= ?",
+        "%#{keyword}%", category_id, start_date, end_date)
+    else
+      where("description like ? and income_category_id = ? and payment_method_id = ? and date >= ? and date <= ?",
+        "%#{keyword}%", category_id, payment_method_id, start_date, end_date)
     end
   }
 end

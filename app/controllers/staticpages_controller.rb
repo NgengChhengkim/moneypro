@@ -1,4 +1,6 @@
 class StaticpagesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     if params[:payment_method] && (@payment_method_id = params[:payment_method][:payment_method_id]).present?
       total_initial_balance = PaymentMethod.find(@payment_method_id).initial_balance
@@ -36,6 +38,26 @@ class StaticpagesController < ApplicationController
   end
 
   def search
-    @sea = User.ransack(params[:q])
+    if params[:type] && Settings.types.income == params[:type][:type_id]
+      @q = current_user.user_incomes.ransack params[:q]
+      if (id = params[:income][:income_category_id]).present?
+        @search_result = @q.result.where(income_category_id: id).group_by{|t| t.date}
+      else
+        @search_result = @q.result.group_by{|t| t.date}
+      end
+    elsif params[:type] && Settings.types.expense == params[:type][:type_id]
+      @q = current_user.user_expenses.ransack params[:q]
+      if (id = params[:expense][:expense_category_id]).present?
+        @search_result = @q.result.where(expense_category_id: id).group_by{|t| t.date}
+      else
+        @search_result = @q.result.group_by{|t| t.date}
+      end
+    else
+      @q = current_user.user_incomes.ransack params[:q]
+      @expense = current_user.user_expenses.ransack params[:q]
+      income_result = @q.result.group_by{|t| t.date}
+      expense_result = @expense.result.group_by{|t| t.date}
+      @search_result = income_result.merge(expense_result){|k, o, n| o+n}
+    end
   end
 end
