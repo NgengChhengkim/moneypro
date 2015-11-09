@@ -1,0 +1,8 @@
+en:
+  search:
+    header:
+      type: "Type"
+      category: "Category"
+      description: "Description"
+      amount: "Amount"
+      payment_method: "Payment Method"

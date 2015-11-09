@@ -1,5 +1,51 @@
-<%= search_form_for @q do |f| %>
-  <%= f.label :name_cont %>
-  <%= f.search_field :name_cont, class: "form-control" %>
-  <%= f.submit "Submit", class: "btn btn-primary" %>
+<%= search_form_for @q, url: search_path, class: "form-inline" do |f| %>
+  <table class="search">
+    <tr>
+      <td width="40%"><%= label_tag :type %></td>
+      <td>
+        <%= collection_select :type, :type_id, Settings.types,
+          :first, :last, {include_blank: t("summary.labels.all"),
+          selected: (params[:type][:type_id] if params[:type])}, class: "form-control type_select"%>
+      </td>
+    </tr>
+    <tr class="income_category">
+      <td><%= label_tag :income_category %></td>
+      <td>
+        <%= collection_select :income, :income_category_id, IncomeCategory.all,
+          :id, :name, {include_blank: t("summary.labels.all"),
+          selected: (params[:income][:income_category_id] if params[:income])}, class: "form-control select-list" %>
+      </td>
+    </tr>
+    <tr class="expense_category">
+      <td><%= label_tag :expense_category %></td>
+      <td>
+        <%= collection_select :expense, :expense_category_id, ExpenseCategory.all,
+          :id, :name, {include_blank: t("summary.labels.all"),
+          selected: (params[:expense][:expense_category_id] if params[:expense])}, class: "form-control select-list" %>
+      </td>
+    </tr>
+    <tr>
+      <td><%= f.label :description %></td>
+      <td><%= f.text_field :description_cont, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :payment_method_id %></td>
+      <td>
+        <%= f.collection_select :payment_method_id_eq, PaymentMethod.all,
+          :id, :name, {include_blank: t("summary.labels.all")},
+          class: "form-control select-list" %>
+      </td>
+    </tr>
+    <tr>
+      <td><%= f.label :from_date %></td>
+      <td><%= f.text_field :date_gteq, class: "form-control datepicker select-list" %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :to_date %></td>
+      <td><%= f.text_field :date_lteq, class: "form-control datepicker select-list" %></td>
+    </tr>
+    <tr>
+      <td><%= f.submit "Search", class: "btn btn-primary" %></td>
+    </tr>
+  </table>
 <% end %>

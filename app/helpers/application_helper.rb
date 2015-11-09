@@ -21,4 +21,12 @@ module ApplicationHelper
   def payment_method_name payment_method
     Settings.payment_methods.all == payment_method ? "All payment method" : PaymentMethod.find(payment_method).name
   end
+
+  def payment_type class_name
+    Settings.payment_class.user_income == class_name ? Settings.types.income : Settings.types.expense
+  end
+
+  def payment_category class_name, object
+    Settings.payment_class.user_income == class_name ? object.income_category.name : object.expense_category.name
+  end
 end

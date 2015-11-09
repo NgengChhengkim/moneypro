@@ -15,7 +15,7 @@ gem "bootstrap-datepicker-rails"
 gem "kaminari"
 gem "bootstrap-kaminari-views"
 gem "config"
-
+gem "ransack"
 group :development, :test do
   gem "byebug"
   gem "web-console", "~> 2.0"

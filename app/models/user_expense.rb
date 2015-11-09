@@ -49,7 +49,7 @@ class UserExpense < ActiveRecord::Base
   }
 
   scope :total_expense, ->payment_method_id, user_id{
-    if payment_method_id
+    if Settings.payment_methods.all == payment_method_id
       where("user_id = ?", user_id)
     else
       where("payment_method_id = ? and user_id = ?",
