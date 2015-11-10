@@ -1,0 +1,6 @@
+en:
+  chart:
+    titles:
+      all: "Income & Expense Chart"
+      income: "Income Chart"
+      expense: "Expense Chart"

@@ -21,12 +21,15 @@
 <div class="tab-content">
   <div role="tabpanel" class="tab-pane active" id="daily">
     <%= render "shared/summary", interval: Settings.intervals.daily %>
+    <div class="daily-chart" data-chart="<%= @daily_chart_data.to_json %>"></div>
   </div>
   <div role="tabpanel" class="tab-pane" id="monthly">
     <%= render "shared/summary", interval: Settings.intervals.monthly %>
+    <div class="monthly-chart" data-chart="<%= @monthly_chart_data.to_json %>"></div>
   </div>
   <div role="tabpanel" class="tab-pane" id="yearly">
     <%= render "shared/summary", interval: Settings.intervals.yearly %>
+    <div class="yearly-chart" data-chart="<%= @yearly_chart_data.to_json %>"></div>
   </div>
   <hr>
   <h4><%= "#{t 'summary.labels.total_balance'} #{@daily_balance}" %></h4>

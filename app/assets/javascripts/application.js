@@ -15,6 +15,9 @@
 //= require turbolinks
 //= require_tree .
 //= require jquery
+//= require highcharts
+//= require highcharts/highcharts-more
+//= require highcharts/modules/drilldown
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
 

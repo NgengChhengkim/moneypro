@@ -32,7 +32,7 @@ class UserExpensesController < ApplicationController
   private
   def params_user_expense
     params.require(:user_expense).permit :amount, :description, :date,
-      :payment_method_id, :income_category_id
+      :payment_method_id, :expense_category_id
   end
 
   def load_user_expense
