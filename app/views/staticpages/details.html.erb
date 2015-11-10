@@ -2,6 +2,11 @@
   <div class="col-md-12">
     <h3><%= @type.capitalize %> : <%= payment_method_name @payment_method_id %></h3>
     <h4><%= @interval.capitalize %>: <%= interval_name @interval %></h4>
+    <p class="pull-right">
+      <%= t "data_export.export" %>
+      <%= link_to t("data_export.csv"), export_path(format: "csv") %> |
+      <%= link_to t("data_export.excel"), export_path(format: "xls") %>
+    </p></br>
     <hr>
     <div class="detail-summary">
       <table class="table">

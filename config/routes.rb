@@ -11,4 +11,5 @@ Rails.application.routes.draw do
 
   get "details/:type/:interval/:payment_method", to: "staticpages#details", as: :details
   get "search" => "staticpages#search"
+  get "export" => "staticpages#export"
 end

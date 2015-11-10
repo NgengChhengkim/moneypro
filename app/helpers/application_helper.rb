@@ -29,4 +29,8 @@ module ApplicationHelper
   def payment_category class_name, object
     Settings.payment_class.user_income == class_name ? object.income_category.name : object.expense_category.name
   end
+
+  def currency amount
+    ActionController::Base.helpers.number_to_currency amount, precision: 1
+  end
 end

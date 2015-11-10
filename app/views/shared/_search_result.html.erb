@@ -5,6 +5,11 @@
   <li role="presentation">
     <a href="#chart" aria-controls="chart" role="tab" data-toggle="tab">Chart</a>
   </li>
+  <p class="pull-right">
+    <%= t "data_export.export" %>
+    <%= link_to t("data_export.csv"), export_path(format: "csv") %> |
+    <%= link_to t("data_export.excel"), export_path(format: "xls") %>
+  </p>
 </ul>
 <div class="tab-content">
   <div role="tabpanel" class="tab-pane active" id="result">
