@@ -19,7 +19,7 @@ class StaticpagesController < ApplicationController
 
     total_income = UserIncome.total_income(@payment_method_id, current_user).sum(:amount) + total_initial_balance
     total_expense = UserExpense.total_expense(@payment_method_id, current_user).sum(:amount)
-    @daily_balance = total_income - total_expense
+    @balance = total_income - total_expense
 
     @daily_chart_data = [
       {name: t("summary.labels.total_income"), y: @daily_income},
@@ -61,6 +61,7 @@ class StaticpagesController < ApplicationController
       else
         @search_result = @q.result.group_by{|t| t.date}
       end
+      @total_income = @q.result.sum :amount
       load_income_expense_data_chart
     elsif params[:type] && Settings.types.expense == (@type = params[:type][:type_id])
       @q = current_user.user_expenses.ransack params[:q]
@@ -69,6 +70,7 @@ class StaticpagesController < ApplicationController
       else
         @search_result = @q.result.group_by{|t| t.date}
       end
+      @total_expense = @q.result.sum :amount
       load_income_expense_data_chart
     else
       @q = current_user.user_incomes.ransack params[:q]
@@ -76,9 +78,9 @@ class StaticpagesController < ApplicationController
       income_result = @q.result.group_by{|t| t.date}
       expense_result = @expense.result.group_by{|t| t.date}
       @search_result = income_result.merge(expense_result){|k, o, n| o+n}
-
+      @total_income = @q.result.sum :amount
+      @total_expense = @expense.result.sum :amount
       # chart data
-
       income_data = []
       expense_data = []
       @date = []

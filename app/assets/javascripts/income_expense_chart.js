@@ -26,14 +26,14 @@ var chart_result = function (container) {
                 borderWidth: 0,
                 dataLabels: {
                     enabled: true,
-                    format: "{point.y:.1f}$"
+                    format: "${point.y:###,0.1f}"
                 }
             }
         },
 
         tooltip: {
             headerFormat: "<span style='font-size:11px'>{series.name}</span><br>",
-            pointFormat: "<span style='color:{point.color}'>{point.name}</span>: <b>{point.y:.1f}$<br/>"
+            pointFormat: "<span style='color:{point.color}'>{point.name}</span>: <b>${point.y:###,0.1f}<br/>"
         },
 
         series: [{
@@ -47,7 +47,7 @@ var chart_result = function (container) {
     });
 }
 
-$(document).ready(function(){
+$(document).on("page:update",function(){
   var container = $(".income-expense-search-result-chart");
   if(container.length > 0) {
     chart_result(container);

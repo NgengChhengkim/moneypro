@@ -1,0 +1,13 @@
+<h2><b><%= "#{t 'summary.labels.total_balance'} #{number_to_currency @balance, precision: 1}" %></b></h2>
+<div class="col-md-3 box">
+  <%= render "shared/summary", interval: Settings.intervals.daily %>
+  <div class="daily-chart" data-chart="<%= @daily_chart_data.to_json %>"></div>
+</div>
+<div class="col-md-3 box">
+  <%= render "shared/summary", interval: Settings.intervals.monthly %>
+  <div class="monthly-chart" data-chart="<%= @monthly_chart_data.to_json %>"></div>
+</div>
+<div class="col-md-3 box">
+  <%= render "shared/summary", interval: Settings.intervals.yearly %>
+  <div class="yearly-chart" data-chart="<%= @yearly_chart_data.to_json %>"></div>
+</div>

@@ -7,6 +7,7 @@ class UserIncome < ActiveRecord::Base
 
   validates :amount, presence: true, numericality: {greater_than: 0}
   validates :date, presence: true
+  validates :description, presence: true
 
   delegate :name, to: :income_category, prefix: true, allow_nil: true
   delegate :name, to: :payment_method, prefix: true, allow_nil: true
@@ -55,16 +56,6 @@ class UserIncome < ActiveRecord::Base
     else
       where("payment_method_id = ? and user_id = ?",
         payment_method_id, user_id)
-    end
-  }
-
-  scope :income_search, ->keyword, category_id, payment_method_id, start_date, end_date{
-    if Settings.payment_methods.all == payment_method_id
-      where("description like ? and income_category_id = ? and date >= ? and date <= ?",
-        "%#{keyword}%", category_id, start_date, end_date)
-    else
-      where("description like ? and income_category_id = ? and payment_method_id = ? and date >= ? and date <= ?",
-        "%#{keyword}%", category_id, payment_method_id, start_date, end_date)
     end
   }
 end

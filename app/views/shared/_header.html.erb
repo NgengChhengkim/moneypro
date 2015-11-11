@@ -1,39 +1,83 @@
 <nav class="navbar navbar-inverse menu">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <div class="navbar-brand"><%= link_to t("menu.title"), "#" %></div>
-    </div>
-
+    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+      <a class="navbar-brand" href="<%= root_path %>"><%= t "menu.title" %></a>
     </div>
 
+    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control search-item" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default search-item"><%= t "menu.submit" %></button>
-      </form>
-
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <li><%= link_to t("menu.user_income"), user_incomes_path %></li>
-          <li><%= link_to t("menu.user_expense"), user_expenses_path %></li>
-          <li><%= link_to t("menu.income_category"), income_categories_path %></li>
-          <li><%= link_to t("menu.expense_category"), expense_categories_path %></li>
-          <li><%= link_to t("menu.payment_method"), payment_methods_path %></li>
-          <li><%= link_to t("menu.signout"), destroy_user_session_path, method: :delete %></li>
+          <li>
+            <%= link_to user_incomes_path do %>
+              <i class="fa fa-plus-square"></i> &nbsp;
+              <%= t("menu.user_income") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to user_expenses_path do %>
+              <i class="fa fa-minus-square"></i> &nbsp;
+              <%= t("menu.user_expense") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to search_path do %>
+              <i class="fa fa-search"></i> &nbsp;
+              <%= t("menu.search") %>
+            <% end %>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i> &nbsp; <%= t "menu.manage" %><span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li>
+                <%= link_to income_categories_path do %>
+                  <i class="fa fa-money"></i>
+                  <%= t("menu.income_category") %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to expense_categories_path do %>
+                  <i class="fa fa-money"></i>
+                  <%= t("menu.expense_category") %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to payment_methods_path do %>
+                  <i class="fa fa-credit-card"></i>
+                  <%= t("menu.payment_method") %>
+                <% end %>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> &nbsp; <%= current_user.name %><span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li>
+                <%= link_to edit_user_registration_path do %>
+                  <i class="fa fa-pencil-square-o"></i>
+                  <%= t("menu.profile") %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete  do%>
+                  <i class="fa fa-sign-out"></i>
+                  <%= t("menu.signout") %>
+                <% end %>
+              </li>
+            </ul>
+          </li>
         <% else %>
           <li><%= link_to t("menu.signup"), new_user_registration_path %></li>
           <li><%= link_to t("menu.signin"), new_user_session_path %></li>
         <% end %>
-        </li>
       </ul>
-    </div>
-  </div>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
 </nav>

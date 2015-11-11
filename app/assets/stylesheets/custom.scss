@@ -2,6 +2,14 @@
 @import "bootstrap";
 @import "font-awesome";
 
+body {
+  background-color: #FAFAFA;
+}
+
+.content {
+  background-color: WHITE;
+}
+
 .menu {
   border-radius: 0px
 }
@@ -30,9 +38,30 @@
 
 .search {
   tr {
-    height: 40px;
+    height: 45px;
   }
   .type_select, .select-list {
     width: 100%;
   }
 }
+
+.summary-box {
+  margin: 0px 20px 0px 50px;
+  .box {
+    -moz-box-shadow:    2px 2px 2px 2px #ccc;
+    -webkit-box-shadow: 2px 2px 2px 2px #ccc;
+    box-shadow:         2px 2px 2px 2px #ccc;
+    margin: 20px 70px 20px 0px;
+  }
+}
+
+.box-search {
+    -moz-box-shadow:    2px 2px 2px 2px #ccc;
+    -webkit-box-shadow: 2px 2px 2px 2px #ccc;
+    box-shadow:         2px 2px 2px 2px #ccc;
+    padding: 20px;
+    margin: 20px 20px 20px 0px;
+    width: 300px;
+    font-weight: bold;
+    font-style: italic;
+  }

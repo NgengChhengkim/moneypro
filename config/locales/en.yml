@@ -1,19 +1,23 @@
 en:
   menu:
-    title: "Money Pro"
+    title: "MONEY PRO"
+    manage: "Manage"
+    profile: "Profile"
     submit: "Submit"
     signin: "Sign In"
     signup: "Sign Up"
     signout: "Sign out"
-    user_income: "User Income"
-    user_expense: "User Expense"
+    user_income: "Add Income"
+    user_expense: "Add Expense"
     income_category: "Income Category"
     expense_category: "Expense Category"
     payment_method: "Payment Method"
+    search: "Search"
   footer:
-    title: "Money Pro"
+    title: "MONEY PRO"
   messages:
     confirm_delete: "Are you sure?"
+    form_error: "Form contains "
   flash:
     create: "Successful created"
     update: "Successful updated"
@@ -25,6 +29,6 @@ en:
       truncate: "..."
   date:
     formats:
-      default: ! "%Y/%m/%d"
+      default: ! "%Y-%m-%d"
   currency:
     default: "$"
