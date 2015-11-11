@@ -1,6 +1,7 @@
 <tr>
   <td><%= l user_income.date, format: :default %></td>
-  <td><%= t "currency.default" %><%= user_income.amount %></td>
+  <td><%= number_to_currency user_income.amount, precision: 1 %></td>
+  <td><%= user_income.description %></td>
   <td><%= user_income.income_category_name %></td>
   <td><%= user_income.payment_method_name %></td>
   <td><%= link_to t("user_incomes.table.edit"),

@@ -27,7 +27,7 @@ var income_expense_chart = function(container) {
     },
     tooltip: {
       headerFormat: "<span style='font-size:11px'>{series.name}</span>",
-      pointFormat: "<b> {point.y:.1f}$<br/>"
+      pointFormat: "<b> ${point.y:###,0.1f}<br/>"
         },
     plotOptions: {
       bar: {
@@ -55,7 +55,7 @@ var income_expense_chart = function(container) {
 }
 
 
-$(document).ready(function(){
+$(document).on("page:update",function(){
   var container = $(".search-result-chart");
   if(container.length > 0) {
     income_expense_chart(container);

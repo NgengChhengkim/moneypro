@@ -1,6 +1,6 @@
 <tr>
   <td><%= l user_expense.date, format: :default %></td>
-  <td><%= t "currency.default" %><%= user_expense.amount %></td>
+  <td><%= number_to_currency user_expense.amount, precision: 1 %></td>
   <td><%= user_expense.description %></td>
   <td><%= user_expense.expense_category_name %></td>
   <td><%= user_expense.payment_method_name %></td>

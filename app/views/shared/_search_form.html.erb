@@ -1,7 +1,7 @@
 <%= search_form_for @q, url: search_path, class: "form-inline" do |f| %>
   <table class="search">
     <tr>
-      <td width="40%"><%= label_tag :type %></td>
+      <td width="30%"><%= label_tag :type %></td>
       <td>
         <%= collection_select :type, :type_id, Settings.types,
           :first, :last, {include_blank: t("summary.labels.all"),
@@ -26,7 +26,7 @@
     </tr>
     <tr>
       <td><%= f.label :description %></td>
-      <td><%= f.text_field :description_cont, class: "form-control" %></td>
+      <td><%= f.text_field :description_cont, class: "form-control select-list" %></td>
     </tr>
     <tr>
       <td><%= f.label :payment_method_id %></td>
@@ -37,15 +37,15 @@
       </td>
     </tr>
     <tr>
-      <td><%= f.label :from_date %></td>
-      <td><%= f.text_field :date_gteq, class: "form-control datepicker select-list" %></td>
+      <td><%= f.label :date %></td>
+      <td class="input-daterange input-group" id="datepicker">
+        <%= f.text_field :date, class: "form-control datepicker" %>
+        <span class="input-group-addon"><%= t "search.labels.to" %></span>
+        <%= f.text_field :date, class: "form-control datepicker" %>
+      </td>
     </tr>
     <tr>
-      <td><%= f.label :to_date %></td>
-      <td><%= f.text_field :date_lteq, class: "form-control datepicker select-list" %></td>
-    </tr>
-    <tr>
-      <td><%= f.submit "Search", class: "btn btn-primary" %></td>
+      <td><%= f.submit t("search.actions.search"), class: "btn btn-primary" %></td>
     </tr>
   </table>
 <% end %>

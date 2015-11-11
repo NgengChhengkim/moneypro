@@ -1,4 +1,4 @@
-<%= form_tag root_path, method: :get, remote: true, class: "form-inline" do %>
+<%= form_tag root_path, method: :get, remote: true, class: "form-inline pull-right" do %>
   <p>
     <%= collection_select :payment_method, :payment_method_id, PaymentMethod.all,
       :id, :name, {include_blank: t("summary.labels.all")}, class: "form-control" %>

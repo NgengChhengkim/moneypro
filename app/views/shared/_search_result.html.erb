@@ -1,40 +1,16 @@
-<div class="detail-summary">
-  <table class="table">
-    <thead>
-      <tr>
-        <td><strong><%= t "search.header.type" %></strong></td>
-        <td><strong><%= t "search.header.category" %></strong></td>
-        <td><strong><%= t "search.header.description" %></strong></td>
-        <td><strong><%= t "search.header.amount" %></strong></td>
-        <td><strong><%= t "search.header.payment_method" %></strong></td>
-      </tr>
-    </thead>
-    <% @search_result.each do |date, transactions| %>
-      <thead>
-        <tr>
-          <td colspan="5" class="alert alert-info"><%= date %></td>
-        </tr>
-      </thead>
-      <tbody>
-        <% transactions.each do |transaction| %>
-          <tr>
-            <td><%= payment_type transaction.class.name %></td>
-            <td><%= payment_category transaction.class.name, transaction %></td>
-            <td><%= transaction.description %></td>
-            <td><%= transaction.amount %></td>
-            <td><%= transaction.payment_method.name %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    <% end %>
-  </table>
-</div>
-
-<div class="chart">
-  <% if @income_expense_data %>
-    <div class="search-result-chart" data-chart="<%=  @income_expense_data.to_json %>"
-      data-date="<%= @date %>"></div>
-  <% else %>
-    <div class="income-expense-search-result-chart" data-chart="<%= @chart_data.to_json %>"   data-drilldown="<%= @chart_data_detail.to_json %>" data-type="<%= @type.capitalize %>"></div>
-  <% end %>
+<ul class="nav nav-tabs" role="tablist" id="tabs">
+  <li role="presentation" class="active">
+    <a href="#result" aria-controls="result" role="tab" data-toggle="tab">Result</a>
+  </li>
+  <li role="presentation">
+    <a href="#chart" aria-controls="chart" role="tab" data-toggle="tab">Chart</a>
+  </li>
+</ul>
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="result">
+    <%= render "shared/result_search" %>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="chart">
+    <%= render "shared/result_chart" %>
+  </div>
 </div>

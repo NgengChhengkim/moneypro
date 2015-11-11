@@ -6,3 +6,7 @@ en:
       description: "Description"
       amount: "Amount"
       payment_method: "Payment Method"
+    labels:
+      to: "to"
+    actions:
+      search: "Search"

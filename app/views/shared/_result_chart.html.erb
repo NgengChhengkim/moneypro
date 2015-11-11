@@ -1,0 +1,8 @@
+<div class="chart">
+  <% if @income_expense_data %>
+    <div class="search-result-chart" data-chart="<%=  @income_expense_data.to_json %>"
+      data-date="<%= @date %>"></div>
+  <% else %>
+    <div class="income-expense-search-result-chart" data-chart="<%= @chart_data.to_json %>"   data-drilldown="<%= @chart_data_detail.to_json %>" data-type="<%= @type.capitalize %>"></div>
+  <% end %>
+</div>

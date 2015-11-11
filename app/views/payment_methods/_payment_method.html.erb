@@ -1,7 +1,7 @@
 <tr>
   <td><%= payment_method.name %></td>
   <td><%= payment_method.description %></td>
-  <td><%= payment_method.initial_balance %></td>
+  <td><%= number_to_currency payment_method.initial_balance, precision: 1 %></td>
   <td><%= link_to t("payment_methods.table.edit"),
    edit_payment_method_path(payment_method), remote: true %></td>
   <td><%= link_to t("payment_methods.table.delete"), payment_method, method: :delete,

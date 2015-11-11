@@ -13,7 +13,7 @@ var show_type = function(type) {
   }
 }
 
-$(document).ready(function() {
+$(document).on("page:update", function() {
   show_type($(".type_select").val());
   $(".type_select").bind('change',function () {
     type = $(this).val();

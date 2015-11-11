@@ -11,7 +11,17 @@ var summary_chart = function (container, json_data) {
           text: ""
       },
       tooltip: {
-
+        pointFormat: "<b> ${point.y:###,0.1f}<br/>"
+      },
+      plotOptions: {
+        pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+            enabled: false
+          },
+          showInLegend: true
+        }
       },
       series: [{
           name: "Brands",
@@ -22,7 +32,7 @@ var summary_chart = function (container, json_data) {
   }
 }
 
-$(document).ready(function(){
+$(document).on("page:update",function(){
   summary_chart(".daily-chart", $(".daily-chart").data("chart"));
   summary_chart(".monthly-chart", $(".monthly-chart").data("chart"));
   summary_chart(".yearly-chart", $(".yearly-chart").data("chart"));
