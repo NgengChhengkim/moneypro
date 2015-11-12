@@ -1,0 +1,7 @@
+<% if @save_plan.errors.any? %>
+  $(".errors").html("<%= j (render 'shared/errors_messages', object: @save_plan) %>")
+<% else %>
+  $(".flash").html("<%= j render 'shared/flash' %>")
+  $(".save-plan-list").html("<%= j render @save_plans %>")
+  $("#form-modal").modal("hide")
+<% end %>

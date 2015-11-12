@@ -6,5 +6,6 @@ class User < ActiveRecord::Base
   has_many :user_expenses, dependent: :destroy
   has_many :expense_categories
   has_many :income_categories
+  has_many :save_plans, dependent: :destroy
   has_many :user_incomes, dependent: :destroy
 end

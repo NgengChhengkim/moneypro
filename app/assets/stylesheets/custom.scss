@@ -6,12 +6,26 @@ body {
   background-color: #FAFAFA;
 }
 
+.width-flash {
+  width: 100%;
+  padding: 0px;
+}
+
+.title {
+  font-size: 30px;
+}
+
 .content {
   background-color: WHITE;
+  margin-top: 60px;
+}
+
+.table {
+  margin: 0px;
 }
 
 .menu {
-  border-radius: 0px
+  border-radius: 0px;
 }
 
 .collapse ul li:hover{

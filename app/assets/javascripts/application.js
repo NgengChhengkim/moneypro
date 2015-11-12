@@ -39,6 +39,12 @@ var datepicker = function() {
   });
 }
 
+$(document).ready(function() {
+  $('a[disabled=disabled]').click(function(event){
+    return false;
+  });
+});
+
 $(document).on("ready", flash);
 $(document).on("page:update", flash);
 $(document).on("page:update", datepicker);

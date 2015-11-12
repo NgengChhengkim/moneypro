@@ -1,0 +1,26 @@
+<div class="save-plans">
+  <span class="title"><%= t "save_plans.title" %></span>
+  <span><%= link_to t("save_plans.add"),new_save_plan_path,
+    remote: true, class: "btn btn-warning pull-right add-new fa fa-plus-circle" %>
+  </span>
+  <table class="table">
+    <thead>
+      <tr class="alert alert-info">
+        <td><%= t "save_plans.name" %></td>
+        <td><%= t "save_plans.amount" %></td>
+        <td><%= t "save_plans.start_date" %></td>
+        <td><%= t "save_plans.end_date" %></td>
+        <td colspan="2"></td>
+      </tr>
+    </thead>
+    <tbody class="save-plan-list">
+      <%= render @save_plans %>
+    </tbody>
+  </table>
+</div>
+
+<div class="paginate" align="center">
+  <%= paginate @save_plans, theme: "twitter-bootstrap-3" %>
+</div>
+
+<div class="modal fade" id="form-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>

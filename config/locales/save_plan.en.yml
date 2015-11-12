@@ -1,0 +1,13 @@
+en:
+  save_plans:
+    title: "Save Plan"
+    name: "Name"
+    amount: "Amount"
+    start_date: "Start date"
+    end_date: "End date"
+    add: "Add new plan"
+    action: "Action"
+    save: "Save"
+    cancel: "Cancel"
+    edit: "Edit"
+    delete: "Delete"

@@ -33,4 +33,16 @@ module ApplicationHelper
   def currency amount
     ActionController::Base.helpers.number_to_currency amount, precision: 1
   end
+
+  def disabled_add_new_save_transaction save_plan
+    enought_save_amount(save_plan) || end_plan(save_plan)
+  end
+
+  def enought_save_amount save_plan
+    save_plan.save_transactions.sum(:amount) >= save_plan.amount
+  end
+
+  def end_plan save_plan
+    save_plan.end_date < Date.today
+  end
 end

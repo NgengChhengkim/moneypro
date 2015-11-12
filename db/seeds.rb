@@ -52,3 +52,12 @@ end
                     expense_category: ExpenseCategory.all.sample,
                     payment_method: PaymentMethod.all.sample
 end
+
+start_date = [2.year.ago, 1.year.ago, Date.today]
+3.times do
+  SavePlan.create   amount: [*100..1000].sample,
+                    name: "save plan",
+                    start_date: start_date.sample,
+                    end_date: "2016-01-01",
+                    user_id: 2
+end

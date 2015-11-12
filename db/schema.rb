@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150907074756) do
+ActiveRecord::Schema.define(version: 20151112161557) do
 
   create_table "expense_categories", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -43,6 +43,30 @@ ActiveRecord::Schema.define(version: 20150907074756) do
   end
 
   add_index "payment_methods", ["user_id"], name: "index_payment_methods_on_user_id", using: :btree
+
+  create_table "save_plans", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.float    "amount",     limit: 24
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "user_id",    limit: 4
+  end
+
+  add_index "save_plans", ["user_id"], name: "index_save_plans_on_user_id", using: :btree
+
+  create_table "save_transactions", force: :cascade do |t|
+    t.string   "name",         limit: 255
+    t.float    "amount",       limit: 24
+    t.string   "description",  limit: 255
+    t.date     "date"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "save_plan_id", limit: 4
+  end
+
+  add_index "save_transactions", ["save_plan_id"], name: "index_save_transactions_on_save_plan_id", using: :btree
 
   create_table "user_expenses", force: :cascade do |t|
     t.float    "amount",              limit: 24
@@ -97,6 +121,8 @@ ActiveRecord::Schema.define(version: 20150907074756) do
   add_foreign_key "expense_categories", "users"
   add_foreign_key "income_categories", "users"
   add_foreign_key "payment_methods", "users"
+  add_foreign_key "save_plans", "users"
+  add_foreign_key "save_transactions", "save_plans"
   add_foreign_key "user_expenses", "expense_categories"
   add_foreign_key "user_expenses", "payment_methods"
   add_foreign_key "user_expenses", "users"
