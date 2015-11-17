@@ -46,13 +46,17 @@ class StaticpagesController < ApplicationController
       transaction = UserIncome.send("#{@interval}_income", @payment_method_id, current_user)
       @transaction_detail = transaction.group_by{|t| t.date}
       @total = transaction.sum :amount
+      Rails.cache.write("total_income", @total)
+      Rails.cache.write("total_expense", 0)
     elsif Settings.types.expense == @type
       transaction = UserExpense.send("#{@interval}_expense", @payment_method_id, current_user)
       @transaction_detail = transaction.group_by{|t| t.date}
       @total = transaction.sum :amount
+      Rails.cache.write("total_income", 0)
+      Rails.cache.write("total_expense", @total)
     end
+    Rails.cache.write("data_export", @transaction_detail)
   end
-
   def search
     if params[:type] && Settings.types.income == (@type = params[:type][:type_id])
       @q = current_user.user_incomes.ransack params[:q]
@@ -63,6 +67,8 @@ class StaticpagesController < ApplicationController
       end
       @total_income = @q.result.sum :amount
       load_income_expense_data_chart
+      Rails.cache.write("total_income", @total_income)
+      Rails.cache.write("total_expense", 0)
     elsif params[:type] && Settings.types.expense == (@type = params[:type][:type_id])
       @q = current_user.user_expenses.ransack params[:q]
       if (id = params[:expense][:expense_category_id]).present?
@@ -72,6 +78,8 @@ class StaticpagesController < ApplicationController
       end
       @total_expense = @q.result.sum :amount
       load_income_expense_data_chart
+      Rails.cache.write("total_income", 0)
+      Rails.cache.write("total_expense", @total_expense)
     else
       @q = current_user.user_incomes.ransack params[:q]
       @expense = current_user.user_expenses.ransack params[:q]
@@ -97,6 +105,21 @@ class StaticpagesController < ApplicationController
         {name: t("summary.labels.total_income"), data: income_data},
         {name: t("summary.labels.total_expense"), data: expense_data}
       ]
+      Rails.cache.write("total_income", @total_income)
+      Rails.cache.write("total_expense", @total_expense)
+      Rails.cache.write("data_export", @search_result)
+    end
+  end
+
+  def export
+    respond_to do |format|
+      format.html
+      format.csv {
+        send_data export_file
+      }
+      format.xls {
+        send_data export_file(col_sep: "\t")
+      }
     end
   end
 
@@ -104,5 +127,26 @@ class StaticpagesController < ApplicationController
   def load_income_expense_data_chart
     @chart_data = @search_result.collect {|date, data| {name: date.to_s, y: data.map(&:amount).sum, drilldown: date.to_s}}
     @chart_data_detail = @search_result.collect {|date, data| {name: date.to_s, id: date.to_s, data: data.map{|d| [] << d.description << d.amount}}}
+  end
+
+  def export_file options = {}
+    datas = Rails.cache.read "data_export"
+    total_income = Rails.cache.read "total_income"
+    total_expense = Rails.cache.read "total_expense"
+    CSV.generate(headers: true) do |csv|
+      attributes = %w{date type amount description category payment_method}
+      csv << ["Date", "Type", "Amount", "Description", "Category", "Payment Method"]
+      datas.each do |date, data|
+        csv << [date]
+        data.each do |d|
+          csv << ["", payment_type(d.class.name), currency(d.amount),
+            d.description, d.send("#{payment_type(d.class.name)}_category").name,
+            d.payment_method.name]
+        end
+      end
+      csv << []
+      csv << ["Total Income ", "", currency(total_income)]
+      csv << ["Total Expense ", "", currency(total_expense)]
+    end
   end
 end

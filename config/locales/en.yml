@@ -32,3 +32,7 @@ en:
       default: ! "%Y-%m-%d"
   currency:
     default: "$"
+  data_export:
+    export: "Export:"
+    csv: "CSV"
+    excel: "Excel"
