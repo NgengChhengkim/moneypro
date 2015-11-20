@@ -1,0 +1,10 @@
+<tr>
+  <td><%= save_transaction.name %></td>
+  <td><%= number_to_currency save_transaction.amount, precision: 1 %></td>
+  <td><%= save_transaction.description %></td>
+  <td><%= save_transaction.date %></td>
+  <td><%= link_to t("save_transactions.edit"),
+    edit_save_plan_save_transaction_path(@save_plan, save_transaction), remote: true %></td>
+  <td><%= link_to t("save_transactions.delete"), [@save_plan, save_transaction],
+    method: :delete, data: {confirm: t("messages.confirm_delete")} %></td>
+</tr>

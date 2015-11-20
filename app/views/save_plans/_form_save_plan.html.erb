@@ -1,0 +1,28 @@
+<div class="save_plan">
+  <%= form_for @save_plan, remote: true do |f| %>
+    <p>
+      <%= f.label :name, class: "item" %>
+      <%= f.text_field :name, class: "form-control item" %>
+    </p>
+
+    <p>
+      <%= f.label :amount, class: "item" %>
+      <%= f.text_field :amount, class: "form-control item" %>
+    </p>
+    <p>
+      <%= f.label :start_date %>
+      <%= f.text_field :start_date, class: "form-control item datepicker" %>
+    </p>
+    <p>
+      <%= f.label :end_date %>
+      <%= f.text_field :end_date, class: "form-control item datepicker" %>
+    </p>
+    <span>
+      <button type="button" class="btn btn-primary item pull-left" data-dismiss="modal">
+        <%= t "save_plans.cancel" %></button>
+    </span>
+    <span>
+      <%= f.submit t("save_plans.save"), class: "btn btn-primary pull-right item" %>
+    </span>
+  <% end %>
+</div>

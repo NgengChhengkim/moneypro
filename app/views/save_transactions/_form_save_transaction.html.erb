@@ -1,0 +1,28 @@
+<div class="save_transaction">
+  <%= form_for [@save_plan, @save_transaction] do |f| %>
+    <p>
+      <%= f.label :name, class: "item" %>
+      <%= f.text_field :name, class: "form-control item" %>
+    </p>
+
+    <p>
+      <%= f.label :amount, class: "item" %>
+      <%= f.text_field :amount, class: "form-control item" %>
+    </p>
+    <p>
+      <%= f.label :description %>
+      <%= f.text_field :description, class: "form-control item" %>
+    </p>
+    <p>
+      <%= f.label :date %>
+      <%= f.text_field :date, class: "form-control item datepicker" %>
+    </p>
+    <span>
+      <button type="button" class="btn btn-primary item pull-left" data-dismiss="modal">
+        <%= t "save_transactions.cancel" %></button>
+    </span>
+    <span>
+      <%= f.submit t("save_transactions.save"), class: "btn btn-primary pull-right item" %>
+    </span>
+  <% end %>
+</div>

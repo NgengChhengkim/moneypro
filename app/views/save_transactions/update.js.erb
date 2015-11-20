@@ -1,0 +1,7 @@
+<% if @save_transaction.errors.any? %>
+  $(".errors").html("<%= j (render 'shared/errors_messages', object: @save_transaction) %>")
+<% else %>
+  $(".flash").html("<%= j render 'shared/flash' %>")
+  $(".save-transaction-list").html("<%= j render @save_transactions %>")
+  $("#form-modal").modal("hide")
+<% end %>

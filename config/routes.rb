@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   resources :payment_methods, exept: :show
   resources :user_expenses, exept: :show
   resources :user_incomes, exept: :show
+  resources :save_plans do
+    resources :save_transactions
+  end
 
   get "details/:type/:interval/:payment_method", to: "staticpages#details", as: :details
   get "search" => "staticpages#search"

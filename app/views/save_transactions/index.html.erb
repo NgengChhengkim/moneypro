@@ -1,0 +1,54 @@
+<div class="save-transactions">
+  <span class="title"><%= t "save_transactions.title" %></span>
+  <span><%= link_to t("save_transactions.add"), new_save_plan_save_transaction_path,
+    remote: true, disabled: disabled_add_new_save_transaction(@save_plan), class: "btn btn-warning pull-right add-new fa fa-plus-circle" %>
+  </span>
+  <table class="table">
+    <thead>
+      <tr class="alert alert-info">
+        <td><%= t "save_transactions.name" %></td>
+        <td><%= t "save_transactions.amount" %></td>
+        <td><%= t "save_transactions.description" %></td>
+        <td><%= t "save_transactions.date" %></td>
+        <td colspan="2"></td>
+      </tr>
+    </thead>
+    <tbody class="save-transaction-list">
+      <%= render @save_transactions %>
+    </tbody>
+  </table>
+  <div class="paginate">
+    <%= paginate @save_transactions, theme: "twitter-bootstrap-3" %>
+  </div>
+
+  <div class="statistic box">
+    <p><%= t "save_transactions.total_save_amount" %>
+      <%= number_to_currency @save_plan.amount, precision: 1 %>
+    </p>
+    <p><%= t "save_transactions.total_save_transaction" %>
+      <span class="total-transaction">
+        <%= number_to_currency @save_transaction, precision: 1 %>
+      </span>
+    </p>
+    <% if end_plan @save_plan  %>
+      Your plan has been ended
+    <% else %>
+
+      <p class="amount-remain"><%= t "save_transactions.amount_remain" %>
+        <%= number_to_currency @save_plan.amount - @save_transaction, precision: 1 %>
+      </p>
+      <p><%= t "save_transactions.duration_remain" %>
+        <%= @duration_remain %>
+        <%= t "save_transactions.months" %>
+      </p>
+      <p><%= t "save_transactions.need_to_save" %>
+        <%= number_to_currency (@save_plan.amount - @save_transaction) / @duration_remain, precision: 1 %> /
+        <%= t "save_transactions.months" %>
+      </p>
+
+    <% end %>
+
+  </div>
+</div>
+
+<div class="modal fade" id="form-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
