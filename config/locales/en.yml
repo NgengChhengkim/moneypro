@@ -13,6 +13,7 @@ en:
     expense_category: "Expense Category"
     payment_method: "Payment Method"
     search: "Search"
+    save_plan: "Save Plan"
   footer:
     title: "MONEY PRO"
   messages:

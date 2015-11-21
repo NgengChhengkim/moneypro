@@ -1,5 +1,5 @@
 <div class="save_transaction">
-  <%= form_for [@save_plan, @save_transaction] do |f| %>
+  <%= form_for [@save_plan, @save_transaction], remote: true do |f| %>
     <p>
       <%= f.label :name, class: "item" %>
       <%= f.text_field :name, class: "form-control item" %>

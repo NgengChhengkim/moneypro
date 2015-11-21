@@ -1,0 +1,4 @@
+<%= link_to new_save_plan_save_transaction_path, remote: true, disabled: disabled_add_new_save_transaction(@save_plan), class: "btn btn-warning pull-right add-new" do %>
+  <i class="fa fa-plus-circle"></i> &nbsp;
+  <%= t("save_transactions.add") %>
+<% end %>

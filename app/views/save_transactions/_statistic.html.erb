@@ -1,0 +1,18 @@
+<p><%= t "save_transactions.total_save_amount" %>
+  <strong><%= number_to_currency @save_plan.amount, precision: 1 %></strong>
+</p>
+<p><%= t "save_transactions.total_save_transaction" %>
+  <strong><%= number_to_currency @save_transaction_amount, precision: 1 %></strong>
+</p>
+<% if end_plan @save_plan  %>
+  <strong><i><%= t "save_transactions.plan_end" %></i></strong>
+<% elsif enought_save_amount @save_plan %>
+  <strong><i><%= t "save_transactions.plan_enough" %></i></strong>
+<% else %>
+  <p class="amount-remain"><%= t "save_transactions.amount_remain" %>
+    <strong><%= number_to_currency @remain_amount, precision: 1 %></strong>
+  </p>
+  <p><%= t "save_transactions.duration_remain" %>
+    <strong><%= distance_of_time_in_words(@save_plan.end_date, Date.today).capitalize %></strong>
+  </p>
+<% end %>
