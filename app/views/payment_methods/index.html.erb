@@ -1,17 +1,17 @@
-<div class="row payment_methods">
-  <div class="col-md-8 col-md-offset-2">
-    <div class="payment_methods-title"><%= t "payment_methods.title" %></div>
+<div class="row payment_methods form">
+  <div class="col-md-12">
+    <div class="title"><%= t "payment_methods.title" %></div>
 
     <div><%= link_to t("payment_methods.add_new"),new_payment_method_path,
     remote: true, class: "btn btn-warning pull-right add-new fa fa-plus-circle" %>
-    </div></br></br>
-    <table class="table table table-bordered table-striped">
+    </div>
+    <table class="table">
       <thead>
-      <tr class="success">
+      <tr class="alert alert-info">
         <td><%= t "payment_methods.table.name" %></td>
         <td><%= t "payment_methods.table.description" %></td>
         <td><%= t "payment_methods.table.initial_balance" %></td>
-        <td colspan="2"><%= t "payment_methods.table.action" %></td>
+        <td colspan="2"></td>
       </tr>
       </thead>
 

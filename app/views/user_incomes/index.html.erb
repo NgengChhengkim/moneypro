@@ -1,19 +1,19 @@
-<div class="row user_incomes">
-  <div class="col-md-8 col-md-offset-2">
-    <div class="user_incomes-title"><%= t "user_incomes.title" %></div>
+<div class="row user_incomes form">
+  <div class="col-md-12">
+    <div class="title"><%= t "user_incomes.title" %></div>
 
     <div><%= link_to t("user_incomes.add_new"),new_user_income_path,
     remote: true, class: "btn btn-warning pull-right add-new fa fa-plus-circle" %>
     </div></br></br>
-    <table class="table table table-bordered table-striped">
+    <table class="table">
       <thead>
-      <tr class="success">
+      <tr class="alert alert-info">
         <td><%= t "user_incomes.table.date" %></td>
         <td><%= t "user_incomes.table.amount" %></td>
         <td><%= t "user_incomes.table.description" %></td>
         <td><%= t "user_incomes.table.category" %></td>
         <td><%= t "user_incomes.table.payment_method" %></td>
-        <td colspan="2"><%= t "user_incomes.table.action" %></td>
+        <td colspan="2"></td>
       </tr>
       </thead>
 

@@ -11,7 +11,10 @@ en:
       payment_method: "Payment Method"
       date: "Date"
       action: "Action"
+      edit: "Edit"
+      delete: "Delete"
     placeholder:
       amount: "Amount"
       description: "Description"
+
 

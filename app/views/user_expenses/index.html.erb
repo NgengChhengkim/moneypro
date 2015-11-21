@@ -1,19 +1,19 @@
-<div class="row user_expenses">
-  <div class="col-md-8 col-md-offset-2">
-    <div class="user_expenses-title"><%= t "user_expenses.title" %></div>
+<div class="row user_expenses form">
+  <div class="col-md-12">
+    <div class="title"><%= t "user_expenses.title" %></div>
 
     <div><%= link_to t("user_expenses.add_new"),new_user_expense_path,
     remote: true, class: "btn btn-warning pull-right add-new fa fa-plus-circle" %>
-    </div></br></br>
-    <table class="table table table-bordered table-striped">
+    </div>
+    <table class="table">
       <thead>
-      <tr class="success">
+      <tr class="alert alert-info">
         <td><%= t "user_expenses.table.date" %></td>
         <td><%= t "user_expenses.table.amount" %></td>
         <td><%= t "user_expenses.table.description" %></td>
         <td><%= t "user_expenses.table.category" %></td>
         <td><%= t "user_expenses.table.payment_method" %></td>
-        <td colspan="2"><%= t "user_expenses.table.action" %></td>
+        <td colspan="2"></td>
       </tr>
       </thead>
 

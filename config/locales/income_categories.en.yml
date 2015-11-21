@@ -9,3 +9,5 @@ en:
       name: "Category Name"
       description: "Category Description"
       action: "Action"
+      edit: "Edit"
+      delete: "Delete"
