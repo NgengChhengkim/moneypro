@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-//= require jquery
 //= require highcharts
 //= require highcharts/highcharts-more
 //= require highcharts/modules/drilldown
@@ -35,12 +34,12 @@ var datepicker = function() {
     showButtonPanel: true,
     format: "yyyy-mm-dd",
   }).on("changeDate", function(ev){
-    $(this).datepicker('hide');
+    $(this).datepicker("hide");
   });
 }
 
 $(document).ready(function() {
-  $('a[disabled=disabled]').click(function(event){
+  $("a[disabled=disabled]").click(function(event){
     return false;
   });
 });

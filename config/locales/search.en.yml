@@ -8,5 +8,6 @@ en:
       payment_method: "Payment Method"
     labels:
       to: "to"
+      search_transaction: "Search Transaction"
     actions:
       search: "Search"

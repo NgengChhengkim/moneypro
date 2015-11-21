@@ -9,4 +9,7 @@ class SavePlan < ActiveRecord::Base
   validates :name, presence: true
   validates :start_date, presence: true
 
+  def duration_remain
+    (end_date - Date.today).to_f / 30
+  end
 end

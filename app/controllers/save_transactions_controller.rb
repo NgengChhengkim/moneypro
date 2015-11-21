@@ -3,10 +3,10 @@ class SaveTransactionsController < ApplicationController
   before_action :load_save_transaction, except: [:new, :edit]
   before_action :find_param_save_plan
   before_action :find_param_save_transaction, only: [:edit, :update, :destroy]
+  before_action :correct_user
 
   def index
-    @save_transaction = SaveTransaction.where(save_plan_id: @save_plan).sum(:amount)
-    @duration_remain = SaveTransaction.duration_remain @save_plan
+    load_statistic
   end
 
   def new
@@ -18,7 +18,7 @@ class SaveTransactionsController < ApplicationController
     @save_transaction.save
     @total_save_transaction = @save_plan.save_transactions.sum(:amount)
     flash.now[:success] = t "flash.create"
-    redirect_to save_plan_save_transactions_path
+    load_statistic
   end
 
   def edit
@@ -27,7 +27,7 @@ class SaveTransactionsController < ApplicationController
   def update
     @save_transaction.update_attributes params_save_transactions
     flash.now[:success] = t "flash.update"
-    redirect_to save_plan_save_transactions_path
+    load_statistic
   end
 
   def destroy
@@ -52,6 +52,17 @@ class SaveTransactionsController < ApplicationController
 
   def find_param_save_transaction
     @save_transaction = SaveTransaction.find params[:id]
+  end
+
+  def load_statistic
+    @save_transaction_amount = @save_plan.save_transactions.sum :amount
+    @duration_remain = @save_plan.duration_remain
+    @remain_amount =  @save_plan.amount - @save_transaction_amount
+    # @save_need = @remain_amount / @duration_remain
+  end
+
+  def correct_user
+    redirect_to root_url unless @save_plan.user == current_user
   end
 
 end

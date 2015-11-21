@@ -1,8 +1,12 @@
 <div class="save-plans">
   <span class="title"><%= t "save_plans.title" %></span>
-  <span><%= link_to t("save_plans.add"),new_save_plan_path,
-    remote: true, class: "btn btn-warning pull-right add-new fa fa-plus-circle" %>
+  <span>
+    <%= link_to new_save_plan_path, remote: true, class: "btn btn-warning pull-right add-new" do %>
+      <i class="fa fa-plus-circle"></i> &nbsp;
+      <%= t("save_plans.add") %>
+    <% end %>
   </span>
+  <hr>
   <table class="table">
     <thead>
       <tr class="alert alert-info">

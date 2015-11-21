@@ -17,3 +17,5 @@ en:
     months: "Months"
     amount_remain: "Amount Remain :"
     need_to_save: "You need to save :"
+    plan_end: "Your Save Plan has been ended"
+    plan_enough: "Your Save Plan amount is enough"
