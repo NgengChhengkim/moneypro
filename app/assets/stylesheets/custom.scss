@@ -3,7 +3,14 @@
 @import "font-awesome";
 
 body {
-  background-color: #FAFAFA;
+  background-color: #EBEBEB;
+  padding-top: 50px;
+}
+
+.navbar {
+  background-color: #545250;
+  box-shadow:         2px 2px 5px 2px #ccc;
+  border: none;
 }
 
 .width-flash {
@@ -12,12 +19,12 @@ body {
 }
 
 .title {
+  padding-top: 20px;
   font-size: 30px;
 }
 
 .content {
   background-color: WHITE;
-  margin-top: 60px;
 }
 
 .table {
@@ -43,6 +50,7 @@ body {
   }
 
   .footer {
+    margin-top: 10px;
     height: 25px;
     border-top: 1px solid #E1E1E1;
     padding-top: 10px;
@@ -70,12 +78,55 @@ body {
 }
 
 .box-search {
-    -moz-box-shadow:    2px 2px 2px 2px #ccc;
-    -webkit-box-shadow: 2px 2px 2px 2px #ccc;
-    box-shadow:         2px 2px 2px 2px #ccc;
-    padding: 20px;
-    margin: 20px 20px 20px 0px;
-    width: 300px;
-    font-weight: bold;
-    font-style: italic;
+  -moz-box-shadow:    2px 2px 2px 2px #ccc;
+  -webkit-box-shadow: 2px 2px 2px 2px #ccc;
+  box-shadow:         2px 2px 2px 2px #ccc;
+  padding: 20px;
+  margin: 20px 20px 20px 0px;
+  width: 300px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.form {
+  .add-new {
+    border-radius: 0px;
+    border-color: #eea236;
+    margin-bottom: 5px;
+    padding-top: 0px;
+    height: 37px;
   }
+
+  .item {
+    border-radius: 0px;
+  }
+
+  .modal-content {
+    border-radius: 0px;
+    height: auto;
+    padding-bottom: 30px;
+  }
+
+  .modal-title {
+    color: #617684;
+  }
+
+  .fa-plus-circle {
+    padding-top: 10px;
+  }
+
+  .title {
+    font-size: 30px;
+    text-align: center;
+  }
+}
+
+.save-transactions {
+  .box {
+    box-shadow: 1px 1px 3px 2px #ccc;
+    margin: 20px 70px 20px 0px;
+    padding: 30px 30px 20px;
+    width: 100%;
+  }
+}
+

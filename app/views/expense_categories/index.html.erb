@@ -1,16 +1,16 @@
-<div class="row expense_categories">
-  <div class="col-md-8 col-md-offset-2">
-    <div class="expense_categories-title"><%= t "expense_categories.title" %></div>
+<div class="row expense_categories form">
+  <div class="col-md-12">
+    <div class="title"><%= t "expense_categories.title" %></div>
 
     <div><%= link_to t("expense_categories.add_new"),new_expense_category_path,
-    remote: true, class: "btn btn-warning pull-right add-new fa fa-plus-circle" %>
-    </div></br></br>
-    <table class="table table table-bordered table-striped">
+      remote: true, class: "btn btn-warning pull-right add-new fa fa-plus-circle" %>
+      </div>
+    <table class="table">
       <thead>
-      <tr class="success">
+      <tr class="alert alert-info">
         <td><%= t "expense_categories.table.name" %></td>
         <td><%= t "expense_categories.table.description" %></td>
-        <td colspan="2"><%= t "expense_categories.table.action" %></td>
+        <td colspan="2"></td>
       </tr>
       </thead>
 

@@ -9,3 +9,5 @@ en:
       description: "Description"
       initial_balance: "Initial Balance"
       action: "Action"
+      edit: "Edit"
+      delete: "Delete"
