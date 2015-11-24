@@ -24,9 +24,11 @@ class UserExpense < ActiveRecord::Base
     if Settings.payment_methods.all == payment_method_id
       where("user_id = ? and date >= ? and date <= ?",
         user_id, Date.today.at_beginning_of_month, Date.today.end_of_month)
+      .order("date DESC")
     else
       where("user_id = ? and date >= ? and date <= ? and payment_method_id = ?",
         user_id, Date.today.at_beginning_of_month, Date.today.end_of_month, payment_method_id)
+      .order("date DESC")
     end
   }
 
@@ -34,9 +36,11 @@ class UserExpense < ActiveRecord::Base
     if Settings.payment_methods.all == payment_method_id
       where("user_id = ? and date >= ? and date <= ?",
         user_id, Date.today.at_beginning_of_year, Date.today.end_of_year)
+      .order("date DESC")
     else
       where("user_id = ? and date >= ? and date <= ? and payment_method_id = ?",
         user_id, Date.today.at_beginning_of_year, Date.today.end_of_year, payment_method_id)
+      .order("date DESC")
     end
   }
 

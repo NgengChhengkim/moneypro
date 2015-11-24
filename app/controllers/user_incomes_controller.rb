@@ -36,7 +36,7 @@ class UserIncomesController < ApplicationController
   end
 
   def load_user_incomes
-    @user_incomes = current_user.user_incomes.order("date").page(params[:page])
+    @user_incomes = current_user.user_incomes.order("date DESC").page(params[:page])
   end
 
   def find_param
