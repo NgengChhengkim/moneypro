@@ -57,13 +57,14 @@ class StaticpagesController < ApplicationController
     end
     Rails.cache.write("data_export", @transaction_detail)
   end
+
   def search
     if params[:type] && Settings.types.income == (@type = params[:type][:type_id])
       @q = current_user.user_incomes.ransack params[:q]
       if (id = params[:income][:income_category_id]).present?
-        @search_result = @q.result.where(income_category_id: id).group_by{|t| t.date}
+        @search_result = @q.result.where(income_category_id: id).order("date DESC").group_by{|t| t.date}
       else
-        @search_result = @q.result.group_by{|t| t.date}
+        @search_result = @q.result.order("date DESC").group_by{|t| t.date}
       end
       @total_income = @q.result.sum :amount
       load_income_expense_data_chart
@@ -72,9 +73,9 @@ class StaticpagesController < ApplicationController
     elsif params[:type] && Settings.types.expense == (@type = params[:type][:type_id])
       @q = current_user.user_expenses.ransack params[:q]
       if (id = params[:expense][:expense_category_id]).present?
-        @search_result = @q.result.where(expense_category_id: id).group_by{|t| t.date}
+        @search_result = @q.result.where(expense_category_id: id).order("date DESC").group_by{|t| t.date}
       else
-        @search_result = @q.result.group_by{|t| t.date}
+        @search_result = @q.result.order("date DESC").group_by{|t| t.date}
       end
       @total_expense = @q.result.sum :amount
       load_income_expense_data_chart
@@ -83,8 +84,8 @@ class StaticpagesController < ApplicationController
     else
       @q = current_user.user_incomes.ransack params[:q]
       @expense = current_user.user_expenses.ransack params[:q]
-      income_result = @q.result.group_by{|t| t.date}
-      expense_result = @expense.result.group_by{|t| t.date}
+      income_result = @q.result.order("date DESC").group_by{|t| t.date}
+      expense_result = @expense.result.order("date DESC").group_by{|t| t.date}
       @search_result = income_result.merge(expense_result){|k, o, n| o+n}
       @total_income = @q.result.sum :amount
       @total_expense = @expense.result.sum :amount

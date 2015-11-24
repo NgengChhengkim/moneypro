@@ -36,7 +36,7 @@ class UserExpensesController < ApplicationController
   end
 
   def load_user_expense
-    @user_expenses = current_user.user_expenses.order("date").page(params[:page])
+    @user_expenses = current_user.user_expenses.order("date DESC").page(params[:page])
   end
 
   def find_param
