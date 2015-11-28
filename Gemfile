@@ -17,6 +17,7 @@ gem "bootstrap-kaminari-views"
 gem "config"
 gem "ransack"
 gem "highcharts-rails", "~> 3.0.0"
+gem 'unicorn'
 group :development, :test do
   gem "byebug"
   gem "web-console", "~> 2.0"
